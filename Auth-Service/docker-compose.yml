@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7  # You can use any other supported database image like PostgreSQL, SQLite, etc.
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: learning
+    ports:
+      - "3306:3306"  # Expose the database port if necessary
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

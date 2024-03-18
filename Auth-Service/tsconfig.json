@@ -1,0 +1,19 @@
+{
+    "compilerOptions" : {
+        "lib" : [
+            "es5",
+            "es6",
+            "DOM"
+        ],
+        "target": "ES6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "esModuleInterop" : true,
+        "experimentalDecorators": true,
+        "outDir": "./build", 
+        "noUnusedLocals": false
+    },
+    "include": ["src", "services", "routes", "di", "controllers", "server/app.ts", "database/config"],
+    "exclude": ["node_modules"]
+  }
