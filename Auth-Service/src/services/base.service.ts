@@ -11,4 +11,4 @@ export default class BaseService {
     async get(): Promise<Object> {
         return this.database.User.findAll()
     }
-}
+} 

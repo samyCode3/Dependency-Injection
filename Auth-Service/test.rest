@@ -1,0 +1,2 @@
+# Get http://localhost:3189/
+POST http://localhost:3189/api/auth

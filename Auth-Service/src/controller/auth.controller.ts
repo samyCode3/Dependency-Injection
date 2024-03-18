@@ -12,7 +12,6 @@ export default class UserController {
 
 
      async create(): Promise<Object> {
-        // asyncFunction()
         return await this.service.create()
      }
 }
