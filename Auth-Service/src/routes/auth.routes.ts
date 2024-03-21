@@ -1,15 +1,16 @@
-import { Router, Request, Response } from "express";
-import container from "../config/inversity";
-import UserController from "../controller/auth.controller";
-import asyncFunction from "../utils/tryCatch";
+// import { Router, Request, Response } from "express";
 
 
-const controller = container.get<UserController>('controller')
-const authRoutes:Router = Router()
+// import UserController from "../controller/auth.controller";
+// import asyncFunction from "../utils/tryCatch";
 
-authRoutes.get('/', asyncFunction(async (request: Request, response: Response)  => {
-    let user = await controller.create()
-    return response.status(200).json(user)
-}))
 
-export default authRoutes
+// const controller = container.get<UserController>('controller')
+// const authRoutes:Router = Router()
+
+// authRoutes.get('/', asyncFunction(async (request: Request, response: Response)  => {
+//     let user = await controller.create()
+//     return response.status(200).json(user)
+// }))
+
+// export default authRoutes

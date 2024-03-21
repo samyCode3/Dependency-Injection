@@ -1,17 +1,15 @@
 import {inject, injectable} from 'inversify'
-import db from '../models/index.js'
-import BaseService from './base.service'
+import BaseService from '../repository/auth.repos'
 
-let {User} =db
 @injectable()
-export default class UserService extends BaseService{
-    constructor(@inject('Database') database: db) {
-          super(database)
+export default class UserService extends BaseService {
+    constructor(@inject('database')  database: BaseService) {
+       super(database)
     }
      async create(): Promise<Object> {
         let user = await this.get()
          return {
-            user
+            user: "samson"
          }
      }
 }

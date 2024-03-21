@@ -1,17 +1,17 @@
 import { inject, injectable } from "inversify";
 import UserService from "../services/auth.service";
-import asyncFunction from "../utils/tryCatch";
+import {  controller,  httpGet  } from "inversify-express-utils";
+import  asyncFunction from '../utils/tryCatch'
 
 
-@injectable()
+
+@controller('/auth')
 export default class UserController {
-     private service: UserService
-     constructor(@inject('service') service: UserService) {
-         this.service= service
-     }
+    constructor(private readonly service: UserService) {}
 
-
-     async create(): Promise<Object> {
-        return await this.service.create()
-     }
+    @httpGet('/')
+    async create(): Promise<Object>{
+         const user = await this.service.get()
+        return user
+    }
 }
