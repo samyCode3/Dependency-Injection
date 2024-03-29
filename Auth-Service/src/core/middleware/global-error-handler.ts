@@ -1,7 +1,8 @@
 import { error } from "console";
 import { Request,  Response, NextFunction} from "express";
-import logger from "../config";
-const ErrorHandler = (error, request: Request, response: Response, next: NextFunction) => {
+import logger from "../../config";
+import asyncFunction from "../utils/tryCatch";
+const ErrorHandler = (asyncFunction((error, request: Request, response: Response, next: NextFunction) => {
     error.statusCode = error.statusCode || 500
     error.status = error.status || 'error'
     logger.error(error.message || `Something went wrong`)
@@ -10,7 +11,6 @@ const ErrorHandler = (error, request: Request, response: Response, next: NextFun
         status: error.status,
         message: error.message || `Something went wrong`
     })
-}
-
+}))
 
 export default ErrorHandler

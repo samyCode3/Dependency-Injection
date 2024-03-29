@@ -13,7 +13,5 @@
         "experimentalDecorators": true,
         "outDir": "./build", 
         "noUnusedLocals": false
-    },
-    "include": ["src", "services", "routes", "di", "controllers", "server/app.ts", "database/config"],
-    "exclude": ["node_modules"]
+    }
   }
