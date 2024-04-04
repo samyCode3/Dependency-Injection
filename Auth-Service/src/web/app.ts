@@ -1,11 +1,10 @@
-import 'reflect-metadata'
+import "reflect-metadata";
 
-import '../user.controller'
-import { App } from './application'
+import "@web/controllers/user.controller";
+import { App } from "@web/application";
 
 export const bootstrap = async () => {
-   new App().setup()
-}
+  new App().setup();
+};
 
-
-bootstrap()
+bootstrap();

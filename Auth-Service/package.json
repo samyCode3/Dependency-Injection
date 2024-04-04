@@ -2,10 +2,11 @@
   "name": "auth-service",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./src/web/app.ts",
+    "dev": "nodemon -r tsconfig-paths/register ./src/web/app.ts | pino-pretty -C",
+    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
     "mysql:migrate": "ts-node database/script.ts"
   },
   "keywords": [],
@@ -20,14 +21,20 @@
     "inversify": "^6.0.2",
     "inversify-express-utils": "^6.4.6",
     "knex": "^3.1.0",
+    "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "nodemon": "^3.1.0",
+    "pino-pretty": "^11.0.0",
     "reflect-metadata": "^0.2.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3",
     "winston": "^3.13.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.30"
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.11.30",
+    "tsc-alias": "^1.8.8",
+    "tsconfig-paths": "^4.2.0",
+    "typescript-transform-paths": "^3.4.7"
   }
 }
