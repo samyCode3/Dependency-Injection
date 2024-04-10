@@ -1,13 +1,17 @@
 import { Container } from "inversify";
-import DbService from "@data/dbService";
-import { UserRepository } from "@data/user.repository";
+import {Repository } from "@data/repository/repository";
 import { UserService } from "@logic/user.service";
 import "@web/controllers/user.controller";
+import { MODULE_TOKENS, SERVICE_MODULE } from "@core/ioc/token";
+import { Knex } from "knex";
+import configuration from "./mysql";
 
-const container = new Container();
 
-container.bind<DbService>(DbService).toSelf();
-container.bind(UserRepository).toSelf();
-container.bind(UserService).toSelf();
+ 
+    const container = new Container();
 
-export default container;
+    container.bind<Knex>(MODULE_TOKENS.KnexClient).toConstantValue(configuration);
+    container.bind<Repository>(MODULE_TOKENS.Repository).to(Repository)
+    container.bind<UserService>(SERVICE_MODULE.user_service).to(UserService)
+   
+ export default container
