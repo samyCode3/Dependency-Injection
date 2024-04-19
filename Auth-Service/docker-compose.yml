@@ -2,15 +2,35 @@ version: '3'
 
 services:
   db:
-    image: mysql:5.7  # You can use any other supported database image like PostgreSQL, SQLite, etc.
+    image: mysql:5.7
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: learning
+      MYSQL_USER: root
+      MYSQL_DATABASE: auth_db
     ports:
-      - "3306:3306"  # Expose the database port if necessary
+      - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/mysql 
 
+  redis:
+    image: redis:6.0.7
+    container_name: redis
+    restart: always
+    volumes:
+      - redis_volume_data:/data
+    ports:
+      - "6379:6379"
+
+  redis_insight:
+    image: redislabs/redisinsight:latest
+    container_name: redis_insight
+    restart: always
+    volumes:
+      - redis_insight_volume_data:/db
+    ports:
+      - "8001:8001"
 volumes:
   db_data:
+  redis_volume_data:
+  redis_insight_volume_data:

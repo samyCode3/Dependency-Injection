@@ -1,7 +1,7 @@
 import express, { NextFunction, request, response } from "express";
 import container from "@core/config/di-container";
 import { InversifyExpressServer } from "inversify-express-utils";
-
+import client from "@core/config/redis.config";
 import morgan from "morgan";
 import ErrorHandler from "@core/middleware/global.error";
 
@@ -20,7 +20,7 @@ export class App {
           return response.send(`Hey lord`);
         }
       );
-      // app.all(
+      // app.use(
       //   "*",
       //   (
       //     request: Request | any,
@@ -34,8 +34,10 @@ export class App {
       //       });
       //   }
       // );
-
+ 
       app.use(morgan("dev"));
+
+      app.use(ErrorHandler)
     });
 
     server.setErrorConfig((app) => {
@@ -45,7 +47,7 @@ export class App {
 
     const app = server.build();
 
-    app.listen(5000, () =>
+    app.listen(5000, () => 
       console.log(`server running on http://localhost:5000`)
     );
   }
