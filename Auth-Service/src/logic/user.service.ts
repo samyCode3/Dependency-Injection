@@ -5,12 +5,16 @@ import { User } from "./entity/user.entity";
 
 @injectable()
 export class UserService {
-  private readonly db = this.repo.createBuilder('users');
-    constructor (@inject(MODULE_TOKENS.Repository) private readonly repo: Repository<User>) {}
+  private readonly db = this.repo.createBuilder("users");
+  constructor(
+    @inject(MODULE_TOKENS.Repository) private readonly repo: Repository<User>
+  ) {}
 
-    public async users () {
-      const user = this.db().select('*')
-       return user
-    }
+  public async users(): Promise<User | any> {
+    return this.db().select("*");
+  }
+
+  public async userById(id: string) {
+    return this.db().where({ id }).select("*");
+  }
 }
- 
