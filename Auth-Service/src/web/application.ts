@@ -1,7 +1,7 @@
 import express, { NextFunction, request, response } from "express";
 import container from "@core/config/di-container";
 import { InversifyExpressServer } from "inversify-express-utils";
-import client from "@core/config/redis.config";
+
 import morgan from "morgan";
 import ErrorHandler from "@core/middleware/global.error";
 

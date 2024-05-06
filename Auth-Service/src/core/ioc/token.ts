@@ -1,7 +1,8 @@
 const MODULE_TOKENS = {
     KnexClient: "KnexClient",
     database :'database',
-    Repository: "repository"
+    Repository: "repository",
+    redis: 'redis_client',
 }
 
 

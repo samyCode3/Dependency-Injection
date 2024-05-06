@@ -11,7 +11,7 @@ export class Repository<T = Record<string, any>> {
   public id() {
     return ulid();
   }
-
+ 
   /**
    * creates a knex query object for a specified table
    * @param table table name

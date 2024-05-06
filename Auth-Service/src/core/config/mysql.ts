@@ -1,6 +1,7 @@
 import knex, { Knex } from "knex";
 
 import { config } from "dotenv";
+import logger from "./index";
 
 config();
 
@@ -26,7 +27,7 @@ query
     console.log("Database connection successful:");
   })
   .catch((error: any) => {
-    console.error("Error connecting to database:", error.message);
+    console.error(`Unable to connect to database`); 
   }) 
 
 
